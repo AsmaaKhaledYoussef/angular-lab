@@ -1,0 +1,20 @@
+<!-- <div *ngFor="let item2 of filteredList">
+  {{item2.name}}
+</div> -->
+
+<div class="row row-cols row-cols g-4 d-flex justify-content-center" >
+  <div class="card item" style="width: 18rem;" *ngFor="let item of filteredList" [ngClass]="{'bg-danger':item.quantity<=0,'bg-warning':item.quantity==1}">
+    <img src="{{item.imgURL | imgPipe :'https://th.bing.com/th/id/OIP.LKpyyTz0V3H0Aar5nFshoAHaE7?w=270&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7'}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{item.name}}</h5>
+      <p class="card-text">Price: {{item.price| currency}}</p>
+      <p class="card-text" >Quantity: {{item.quantity}}</p>
+      <a class="btn btn-dark" (click)="add(item)" >Add to chart</a>
+      <button type="button" class="btn btn-danger" style="margin-left: 80px;"><i class="fa-solid fa-trash" (click)="deleteprd(item)"></i></button>
+      <button type="button" class="btn btn-info" style="width: 100%;margin-top: 30px;">More details</button>
+    </div>
+  </div>
+  </div>
+
+
+

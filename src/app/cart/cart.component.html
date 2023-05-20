@@ -1,0 +1,50 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">name product</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Salary</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr  *ngFor="let c of getallprdCart">
+        <td>{{c.product.name}}</td>
+        <td> <button>+</button> {{c.qty}} <button>-</button> </td>
+        <td>{{c.product.price}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">image</th>
+      <th scope="col">name</th>
+      <th scope="col">price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">#</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr> -
+     <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table> -->

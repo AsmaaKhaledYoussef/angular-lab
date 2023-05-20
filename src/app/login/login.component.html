@@ -1,0 +1,43 @@
+<form [formGroup]="login">
+  <div class="row mb-3">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" name="email"   formControlName="email"
+      [ngClass]="{
+        'is-valid': login.controls['email'].valid && login.controls['email'].touched,
+        'is-invalid': login.controls['email'].invalid && login.controls['email'].touched,
+     }">
+     <div
+     class="invalid-feedback"
+     *ngIf="
+       login.controls['email'].invalid && login.controls['email'].touched
+     "
+   >
+     <span *ngIf="login.controls['email'].hasError('required')"
+       >Please provide a enter Email.</span
+     >
+     <span *ngIf="login.controls['email'].hasError('pattern')"
+       >Email is Not Valid</span
+     >
+   </div>
+</div>
+    </div>
+
+  <div class="row mb-3">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" name="password" formControlName="password"
+      [ngClass]="{'is-valid': login.controls['password'].valid && login.controls['password'].touched,
+        'is-invalid': login.controls['password'].invalid && login.controls['password'].touched,}" >
+        <div class="invalid-feedback" *ngIf="login.controls['password'].invalid && login.controls['password'].touched">
+
+          <span *ngIf="login.controls['password'].hasError('required')">Password is Required.</span>
+          <span *ngIf="login.controls['password'].hasError('pattern')">Please provide a valid Pattern like : P@ssword1234
+            .</span>
+          <span *ngIf="login.controls['password'].hasError('minLength')">User name must have 8 chrachter at Least .</span>
+
+        </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>

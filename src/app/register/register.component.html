@@ -1,0 +1,82 @@
+<form class="row g-3" [formGroup]="register" >
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Name</label>
+    <input type="text" class="form-control" id="inputEmail4" name="name"
+    formControlName="name"
+    [ngClass]="{
+        'is-valid': register.controls['name'].valid && register.controls['name'].touched,
+        'is-invalid': register.controls['name'].invalid && register.controls['name'].touched,
+     }">
+     <div class="valid-feedback"  *ngIf="register.controls['name'].valid && register.controls['name'].touched">
+      Looks good!
+    </div>
+    <div class="invalid-feedback" *ngIf=" register.controls['name'].invalid && register.controls['name'].touched">
+     Name is Requird
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Email</label>
+    <input type="email" class="form-control" id="inputEmail4" name="email"
+    formControlName="email"
+    [ngClass]="{
+      'is-valid': register.controls['email'].valid && register.controls['email'].touched,
+      'is-invalid': register.controls['email'].invalid && register.controls['email'].touched,
+   }">
+   <div
+          class="invalid-feedback"
+          *ngIf="
+            register.controls['email'].invalid && register.controls['email'].touched
+          "
+        >
+          <span *ngIf="register.controls['email'].hasError('required')"
+            >Please provide a enter Email.</span
+          >
+          <span *ngIf="register.controls['email'].hasError('pattern')"
+            >Please provide a valid Pattern like : test_30@company.com .</span
+          >
+        </div>
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">User Name</label>
+    <input type="text" class="form-control" id="inputEmail4" name="uname"  formControlName="uname"
+    [ngClass]="{'is-valid': register.controls['uname'].valid && register.controls['uname'].touched,
+      'is-invalid': register.controls['uname'].invalid && register.controls['uname'].touched,}">
+   <div class="invalid-feedback" *ngIf="register.controls['uname'].invalid && register.controls['uname'].touched">
+
+   <span *ngIf="register.controls['uname'].hasError('required')">Please provide a enter username.</span>
+   <span *ngIf="register.controls['uname'].hasError('pattern')">User name must have no space .</span>
+ </div>
+</div>
+
+  <div class="col-md-6">
+    <label for="inputPassword4" class="form-label">Password</label>
+    <input type="password" class="form-control" id="inputPassword4" name="password" formControlName="password"
+    [ngClass]="{'is-valid': register.controls['password'].valid && register.controls['password'].touched,
+      'is-invalid': register.controls['password'].invalid && register.controls['password'].touched,}" >
+      <div class="invalid-feedback" *ngIf="register.controls['password'].invalid && register.controls['password'].touched">
+
+        <span *ngIf="register.controls['password'].hasError('required')">Password is Required.</span>
+        <span *ngIf="register.controls['password'].hasError('pattern')">Please provide a valid Pattern like : P@ssword1234
+          .</span>
+        <span *ngIf="register.controls['password'].hasError('minLength')">User name must have 8 chrachter at Least .</span>
+
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 100% !important;">
+    <label for="inputPassword4" class="form-label">Confirm Password</label>
+    <input (keyup)="matchpass()" type="password" class="form-control" id="inputPassword4" name="passwordConfirm" formControlName="passwordConfirm">
+    <!-- [ngClass]="{'is-valid': register.controls['passwordConfirm'].valid && register.controls['passwordConfirm'].touched,
+    'is-invalid': register.controls['passwordConfirm'].invalid && register.controls['passwordConfirm'].touched,}" >
+    <div class="invalid-feedback" *ngIf="register.controls['passwordConfirm'].invalid && register.controls['passwordConfirm'].touched">-->
+      <div class="invalid-feedback" *ngIf="register.controls['passwordConfirm'].touched">
+
+        <span *ngIf="register.controls['passwordConfirm'].hasError('required')">Password is Required.</span>
+        <span *ngIf="!isMatch">Password must be the same.</span>
+      </div>
+  </div>
+    <div class="col-12">
+    <button type="submit" class="btn btn-primary">Register</button>
+  </div>
+
+</form>

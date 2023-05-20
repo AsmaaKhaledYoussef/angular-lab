@@ -1,0 +1,17 @@
+
+<app-header></app-header>
+
+<div class="container">
+  <input type="text" [(ngModel)]="userName">
+ current user : {{userName}}
+  <br>
+  <div class="bg-info">
+    count in cart {{cartCount}}
+  </div>
+  <select name="" [(ngModel)]="selectedCatId">
+
+<option value="" *ngFor="let item of Categories" [value] = "item.id">{{item.name}}</option>
+  </select>
+</div>
+<app-product class="mx-auto p-2" [recivedCatID] = "selectedCatId" (countNumber)="getUpdates($event)"></app-product>
+<app-cart></app-cart>
